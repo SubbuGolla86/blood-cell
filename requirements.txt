@@ -1,3 +1,4 @@
 streamlit
 google-cloud-storage
-google-cloud-datastore
+google-cloud-firestore
+google-cloud-pubsub
