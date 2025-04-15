@@ -3,6 +3,7 @@ from PIL import Image
 import os
 from datetime import datetime
 from bucket import upload_file
+from datastore import create_blood_cell_record
 
 os.makedirs("uploaded", exist_ok=True)
 os.makedirs("models", exist_ok=True)
@@ -22,4 +23,5 @@ if uploaded_file is not None:
     image.save(filename)
     upload_file(filename)
     st.image(image, caption='Uploaded Image.', use_column_width=True)
+    record_id = create_blood_cell_record(user_name="John Doe",email="john@example.com",image_path=filename)
     data = st.info("Predicting Cancer......")

@@ -1,7 +1,7 @@
 from google.cloud import  storage
 
 storage_client = storage.Client()
-bucket_name = " blood_cell_bucket"
+bucket_name = "blood_cell_bucket"
 bucket = storage_client.bucket(bucket_name)
 
 def upload_file(file_name):
