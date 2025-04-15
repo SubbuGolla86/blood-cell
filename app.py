@@ -22,6 +22,6 @@ if uploaded_file is not None:
     filename = f"uploaded/image_{timestamp}.png"
     image.save(filename)
     upload_file(filename)
-    st.image(image, caption='Uploaded Image.', use_column_width=True)
+    st.image(image, caption='Uploaded Image.', use_container_width=True)
     record_id = create_blood_cell_record(user_name="John Doe",email="john@example.com",image_path=filename)
     data = st.info("Predicting Cancer......")

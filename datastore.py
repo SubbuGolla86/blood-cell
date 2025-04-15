@@ -3,7 +3,7 @@ import uuid
 from datetime import datetime
 
 datastore_client = datastore.Client()
-kind_name = "blood-cell"
+kind_name = "Blood-cell-db"
 
 def create_blood_cell_record(user_name, email, image_path):
     record_id = str(uuid.uuid4())
