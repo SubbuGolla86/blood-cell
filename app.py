@@ -4,7 +4,6 @@ import os
 from datetime import datetime
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "spartan-vine-456818-e9-ee2656c80875.json"
 from bucket import upload_file
-#from datastore import create_blood_cell_record
 from google.cloud import pubsub_v1
 from datastore import create_blood_cell_record
 import re
