@@ -7,8 +7,6 @@ from google.cloud import pubsub_v1
 from bucket import upload_file
 from datastore import create_blood_cell_record,fetch_records_by_email
 
-# Set up environment and publisher
-os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = "spartan-vine-456818-e9-db1787788934.json"
 os.makedirs("uploaded", exist_ok=True)
 
 topic_path = 'projects/spartan-vine-456818-e9/topics/blood-cell-channel'
