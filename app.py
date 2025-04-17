@@ -33,24 +33,25 @@ def home_page():
 def predict_page():
     st.header("Detect Blood Cell")
     email = st.text_input("Enter your email address")
-
-    if st.button("Submit"):
-        if not email or not is_valid_email(email):
-            st.error("Please enter a valid email address.")
-        else:
-            uploaded_file = st.file_uploader("Upload an image", type="jpg")
-            if uploaded_file:
-                image = Image.open(uploaded_file)
-                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                filename = f"uploaded/image_{timestamp}.png"
-                image.save(filename)
-                upload_file(filename)
-                record_id = create_blood_cell_record(email, filename)
-                st.image(image, caption='Uploaded Image.', use_container_width=True)
-                data = record_id.encode('utf-8')
-                future = publisher.publish(topic_path, data)
-                
-                st.info("Hang tight! Your report is on the way. Please check the history.")
+    uploaded_file = st.file_uploader("Upload an image", type="jpg")
+ 
+     if st.button("Submit"):
+         if not email or not is_valid_email(email):
+             st.error("Please enter a valid email address.")
+         elif not uploaded_file:
+             st.error("Please upload an image file.")
+         else:
+             image = Image.open(uploaded_file)
+             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+             filename = f"uploaded/image_{timestamp}.png"
+             image.save(filename)
+     
+             upload_file(filename)
+             record_id=create_blood_cell_record(email, filename)
+             st.image(image, caption='Uploaded Image.', use_container_width=True)
+             data = record_id.encode('utf-8')
+             future = publisher.publish(topic_path, data)    
+             st.info("Hang tight! Your report is on the way. Please check the history.")
 
 def history_page():
     email = st.text_input("Enter your email address")
